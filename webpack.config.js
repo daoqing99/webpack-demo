@@ -28,7 +28,16 @@ module.exports = {
       },
       {
         test: /\.(css|scss)$/,
-        use: ["style-loader", "css-loader", "sass-loader", "postcss-loader"],
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            importLoaders: 2,
+            modules: true,
+          },
+          "sass-loader",
+          "postcss-loader",
+        ],
       },
       // css 解析loader npm install css-loader style-loader -D
       // sass-loader 安装命令   npm install sass-loader node-sass -D
